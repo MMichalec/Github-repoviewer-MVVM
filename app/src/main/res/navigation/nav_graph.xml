@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/repositoriesFragment"
+        android:name="com.mmichalec.allegroRecruitmentTask.ui.repositories.RepoFragment"
+        android:label="Allegro repositories list"
+        android:fontFamily="@font/alegreya_sans_sc_medium"
+        tools:layout="@layout/fragment_repo_list">
+        <action
+            android:id="@+id/action_repositoriesFragment_to_repoDetailsFragment"
+            app:destination="@id/repoDetailsFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/repoDetailsFragment"
+        android:fontFamily="@font/alegreya_sans_sc_medium"
+        android:name="com.mmichalec.allegroRecruitmentTask.ui.repoDetails.RepoDetailsFragment"
+        android:label="Repository {repoName}"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="repoName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.mmichalec.allegroRecruitmentTask.ui.welcome.WelcomeFragment"
+        android:label="Welcome"
+        android:fontFamily="@font/alegreya_sans_sc_medium"
+        tools:layout="@layout/welcome_screen">
+        <action
+            android:id="@+id/action_welcomeFragment_to_repositoriesFragment"
+            app:destination="@id/repositoriesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+</navigation>
