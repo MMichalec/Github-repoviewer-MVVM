@@ -4,6 +4,8 @@ import android.app.Application
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
@@ -21,6 +23,9 @@ class WelcomeFragment : Fragment(R.layout.welcome_screen) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val anim = AnimationUtils.loadAnimation(activity?.applicationContext, R.anim.fade_in)
+        val anim2 = AnimationUtils.loadAnimation(activity?.applicationContext, R.anim.fade_in)
+        val anim3 = AnimationUtils.loadAnimation(activity?.applicationContext, R.anim.fade_in)
+        val anim4 = AnimationUtils.loadAnimation(activity?.applicationContext, R.anim.fade_out)
 
         val binding = WelcomeScreenBinding.bind(view)
         setHasOptionsMenu(false)
@@ -31,6 +36,9 @@ class WelcomeFragment : Fragment(R.layout.welcome_screen) {
 
             anim.startOffset = 2000
             textViewByMMichalec.startAnimation(anim)
+
+            anim2.startOffset = 3500
+            editTextRepoName.startAnimation(anim2)
 
             buttonStart.setOnClickListener {
                 val githubUser = editTextRepoName.text.toString()
@@ -45,8 +53,29 @@ class WelcomeFragment : Fragment(R.layout.welcome_screen) {
                     startActivity(intent)
                 }
             }
-        }
 
+            editTextRepoName.addTextChangedListener(object : TextWatcher{
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    if(p0?.length!! > 0 && buttonStart.visibility == View.GONE){
+                        buttonStart.visibility = View.VISIBLE
+                        buttonStart.startAnimation(anim3)
+                    }
+                    if(p0.isEmpty() && buttonStart.visibility != View.GONE) {
+                        buttonStart.startAnimation(anim4)
+                        buttonStart.visibility = View.GONE
+                    }
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+
+                }
+            })
+
+            }
 
     }
 

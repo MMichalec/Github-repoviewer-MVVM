@@ -2,6 +2,8 @@
 <resources>
     <color name="main">#FF3B30</color>
     <color name="suplementary">#FF2D30</color>
+    <color name="background_welcome_Screen">#001c6d</color>
+    <color name="greyed_out">#979595</color>
 
 
     <color name="purple_200">#BD5D28</color>
