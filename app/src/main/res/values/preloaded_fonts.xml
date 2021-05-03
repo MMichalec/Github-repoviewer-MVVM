@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/alef</item>
         <item>@font/alegreya_sans_sc</item>
         <item>@font/alegreya_sans_sc_medium</item>
+        <item>@font/biorhyme_expanded_regular</item>
         <item>@font/duru_sans</item>
+        <item>@font/krona_one</item>
         <item>@font/roboto</item>
     </array>
 </resources>

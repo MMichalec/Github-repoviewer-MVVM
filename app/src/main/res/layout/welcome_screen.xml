@@ -6,24 +6,28 @@
     tools:context=".ui.welcome.WelcomeFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animation_welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_start"
+        android:id="@+id/animation_github"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:baselineAlignBottom="true"
+
+        android:scaleX="2"
+        android:scaleY="2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.147"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="anim_welcome.json"
+        app:lottie_fileName="github.json"
         app:lottie_loop="false"
-        app:lottie_speed="1" />
+        app:lottie_speed="0.5" />
 
     <Button
 
@@ -40,24 +44,49 @@
         app:layout_constraintVertical_bias="0.947" />
 
     <TextView
-        android:clickable="true"
+
         android:id="@+id/text_view_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:fontFamily="@font/roboto"
-        android:padding="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/krona_one"
+
         android:text="@string/welcome_text"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.816"
-        android:focusable="true" />
+        app:layout_constraintVertical_bias="0.416" />
+
+    <EditText
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:layout_margin="25dp"
+        android:id="@+id/edit_text_repoName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/input_repository_name_here"
+        app:layout_constraintBottom_toTopOf="@+id/button_start"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_byMMichalec"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:textColor="@color/white"
+        android:id="@+id/text_view_byMMichalec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/krona_one"
+        android:text="@string/byMMichalec"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_welcome" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

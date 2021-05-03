@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/repositoriesFragment"
-        android:name="com.mmichalec.allegroRecruitmentTask.ui.repositories.RepoFragment"
+        android:name="com.mmichalec.githubRepoviewerMVVM.ui.repositories.RepoFragment"
         android:label="Allegro repositories list"
         android:fontFamily="@font/alegreya_sans_sc_medium"
         tools:layout="@layout/fragment_repo_list">
@@ -18,20 +18,27 @@
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/fade_out" />
+        <argument
+            android:name="githubUser"
+            app:argType="string"
+            android:defaultValue="MMichalec" />
     </fragment>
     <fragment
         android:id="@+id/repoDetailsFragment"
         android:fontFamily="@font/alegreya_sans_sc_medium"
-        android:name="com.mmichalec.allegroRecruitmentTask.ui.repoDetails.RepoDetailsFragment"
+        android:name="com.mmichalec.githubRepoviewerMVVM.ui.repoDetails.RepoDetailsFragment"
         android:label="Repository {repoName}"
         tools:layout="@layout/fragment_details">
         <argument
             android:name="repoName"
             app:argType="string" />
+        <argument
+            android:name="githubUser"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.mmichalec.allegroRecruitmentTask.ui.welcome.WelcomeFragment"
+        android:name="com.mmichalec.githubRepoviewerMVVM.ui.welcome.WelcomeFragment"
         android:label="Welcome"
         android:fontFamily="@font/alegreya_sans_sc_medium"
         tools:layout="@layout/welcome_screen">

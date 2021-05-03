@@ -7,23 +7,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animation_welcome"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_start"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="anim_welcome.json"
-        app:lottie_loop="false"
-        app:lottie_speed="1" />
-
     <Button
 
         android:id="@+id/button_start"
@@ -36,7 +19,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="0.947" />
 
     <TextView
         android:id="@+id/text_view_welcome"
@@ -44,17 +27,41 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
+        android:clickable="true"
+        android:focusable="true"
         android:fontFamily="@font/roboto"
         android:padding="10dp"
         android:text="@string/welcome_text"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.004" />
+        app:layout_constraintVertical_bias="0.217" />
+
+    <EditText
+        android:gravity="center"
+        android:layout_margin="25dp"
+        android:id="@+id/edit_text_repoName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/input_repository_name_here"
+        app:layout_constraintBottom_toTopOf="@+id/button_start"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_byMMichalec"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/text_view_byMMichalec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:text="@string/byMMichalec"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_welcome" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

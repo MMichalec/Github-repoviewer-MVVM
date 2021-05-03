@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="main">#FF3B30</color>
+    <color name="suplementary">#FF2D30</color>
+
+
     <color name="purple_200">#BD5D28</color>
-    <color name="allegro_main">#ff5a00</color>
+    <color name="allegro_main">#03A9F4</color>
     <color name="purple_500">#ff5a00</color>
-    <color name="allegro_secondary">#F16B23</color>
+    <color name="allegro_secondary">#FF3B30</color>
     <color name="purple_700">#E4D6CE</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>

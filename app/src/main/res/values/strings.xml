@@ -1,12 +1,24 @@
 <resources>
-    <string name="app_name">Allegro Repos</string>
+
+
+    <string name="app_name">githubRepoviewerMVVM</string>
+    <!-- WELCOME SCREEN   -->
+
+    <string name="welcome_text"><b>REPOVIEWER</b></string>
+    <string name="byMMichalec">by MMichalec</string>
+
     <string name="goToApp">"Let's start!"</string>
+
+
+
+
     <string name="noDescription"><![CDATA[<no description>]]></string>
-    <string name="welcome_text">Hi! I\'m <b>Mateusz Michalec</b>, the student of Politechnika Łódzka. I have prepared this mobile application for <b>you</b>!</string>
+
     <string name="repository_name">Repository name:</string>
     <string name="description">Description</string>
     <string name="_125_nwatchers">125\nWatchers:</string>
     <string name="subscribers">Subscribers:</string>
     <string name="id">ID</string>
     <string name="repository_url">Repository URL</string>
+    <string name="input_repository_name_here">Input repository name here</string>
 </resources>
