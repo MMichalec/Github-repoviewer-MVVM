@@ -2,10 +2,13 @@ package com.mmichalec.githubRepoviewerMVVM.ui.welcome
 
 import android.app.Application
 import android.content.Intent
+import android.inputmethodservice.Keyboard
 import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
+import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
@@ -40,7 +43,13 @@ class WelcomeFragment : Fragment(R.layout.welcome_screen) {
             anim2.startOffset = 3500
             editTextRepoName.startAnimation(anim2)
 
+            if(editTextRepoName.text.isNullOrBlank()){
+                buttonStart.visibility = View.GONE
+            }
+
             buttonStart.setOnClickListener {
+                view.clearFocus()
+                editTextRepoName.text.clear()
                 val githubUser = editTextRepoName.text.toString()
                 val action = WelcomeFragmentDirections.actionWelcomeFragmentToRepositoriesFragment(githubUser)
                 findNavController().navigate(action)
@@ -54,10 +63,10 @@ class WelcomeFragment : Fragment(R.layout.welcome_screen) {
                 }
             }
 
-            editTextRepoName.addTextChangedListener(object : TextWatcher{
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
-                }
+            editTextRepoName.addTextChangedListener(object : TextWatcher{
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+                override fun afterTextChanged(p0: Editable?) {}
 
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     if(p0?.length!! > 0 && buttonStart.visibility == View.GONE){
@@ -69,14 +78,21 @@ class WelcomeFragment : Fragment(R.layout.welcome_screen) {
                         buttonStart.visibility = View.GONE
                     }
                 }
+            })
 
-                override fun afterTextChanged(p0: Editable?) {
-
+            editTextRepoName.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                    view.clearFocus()
+                    val githubUser = editTextRepoName.text.toString()
+                    val action = WelcomeFragmentDirections.actionWelcomeFragmentToRepositoriesFragment(githubUser)
+                    findNavController().navigate(action)
+                    editTextRepoName.text.clear()
+                    return@OnKeyListener true
                 }
+                false
             })
 
             }
-
     }
 
 

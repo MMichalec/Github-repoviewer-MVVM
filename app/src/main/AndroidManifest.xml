@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
+
     <application
         android:name="com.mmichalec.githubRepoviewerMVVM.GithubRepoviewerMVVMApp"
         android:allowBackup="true"
@@ -13,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name="com.mmichalec.githubRepoviewerMVVM.MainActivity">
+        <activity android:name="com.mmichalec.githubRepoviewerMVVM.MainActivity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
