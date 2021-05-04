@@ -20,7 +20,7 @@ import com.mmichalec.githubRepoviewerMVVM.R
 import com.mmichalec.githubRepoviewerMVVM.databinding.WelcomeScreenBinding
 
 class WelcomeFragment : Fragment(R.layout.welcome_screen) {
-
+    private var isFirstVisit = true
     private val viewModel: WelcomeViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,6 +29,7 @@ class WelcomeFragment : Fragment(R.layout.welcome_screen) {
         val anim2 = AnimationUtils.loadAnimation(activity?.applicationContext, R.anim.fade_in)
         val anim3 = AnimationUtils.loadAnimation(activity?.applicationContext, R.anim.fade_in)
         val anim4 = AnimationUtils.loadAnimation(activity?.applicationContext, R.anim.fade_out)
+
 
         val binding = WelcomeScreenBinding.bind(view)
         setHasOptionsMenu(false)
@@ -40,7 +41,10 @@ class WelcomeFragment : Fragment(R.layout.welcome_screen) {
             anim.startOffset = 2000
             textViewByMMichalec.startAnimation(anim)
 
-            anim2.startOffset = 3500
+            if(isFirstVisit){
+                anim2.startOffset = 3500
+            }
+
             editTextRepoName.startAnimation(anim2)
 
             if(editTextRepoName.text.isNullOrBlank()){
@@ -48,11 +52,12 @@ class WelcomeFragment : Fragment(R.layout.welcome_screen) {
             }
 
             buttonStart.setOnClickListener {
-                view.clearFocus()
                 editTextRepoName.text.clear()
                 val githubUser = editTextRepoName.text.toString()
+                view.clearFocus()
                 val action = WelcomeFragmentDirections.actionWelcomeFragmentToRepositoriesFragment(githubUser)
                 findNavController().navigate(action)
+                isFirstVisit = false
             }
             val url = Uri.parse("https://www.linkedin.com/in/mateusz-michalec-b2aa7b124/")
             val intent = Intent(Intent.ACTION_VIEW, url)
@@ -87,6 +92,7 @@ class WelcomeFragment : Fragment(R.layout.welcome_screen) {
                     val action = WelcomeFragmentDirections.actionWelcomeFragmentToRepositoriesFragment(githubUser)
                     findNavController().navigate(action)
                     editTextRepoName.text.clear()
+                    isFirstVisit = false
                     return@OnKeyListener true
                 }
                 false

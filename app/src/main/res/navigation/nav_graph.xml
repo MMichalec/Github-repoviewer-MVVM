@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/repositoriesFragment"
         android:name="com.mmichalec.githubRepoviewerMVVM.ui.repositories.RepoFragment"
-        android:label="Allegro repositories list"
         android:fontFamily="@font/alegreya_sans_sc_medium"
+        android:label="{githubUser} repositories list"
         tools:layout="@layout/fragment_repo_list">
         <action
             android:id="@+id/action_repositoriesFragment_to_repoDetailsFragment"
@@ -20,8 +20,8 @@
             app:popExitAnim="@anim/fade_out" />
         <argument
             android:name="githubUser"
-            app:argType="string"
-            android:defaultValue="MMichalec" />
+            android:defaultValue="MMichalec"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/repoDetailsFragment"

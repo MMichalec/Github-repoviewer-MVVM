@@ -30,6 +30,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class RepoFragment : Fragment(R.layout.fragment_repo_list),
     RepoAdapter.OnItemClickListener {
 
+
     private var isConnection = false
     private val viewModel by viewModels<RepoViewModel>()
     private val args by navArgs<RepoFragmentArgs>()
@@ -38,8 +39,6 @@ class RepoFragment : Fragment(R.layout.fragment_repo_list),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("Data", args.githubUser)
-
         val networkConnection = NetworkConnection(activity?.applicationContext!!)
         networkConnection.observe(viewLifecycleOwner, Observer { isConnected ->
             isConnection = isConnected
