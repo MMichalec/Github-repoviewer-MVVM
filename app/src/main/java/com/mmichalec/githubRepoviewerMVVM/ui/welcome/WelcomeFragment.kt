@@ -52,11 +52,11 @@ class WelcomeFragment : Fragment(R.layout.welcome_screen) {
             }
 
             buttonStart.setOnClickListener {
-                editTextRepoName.text.clear()
-                val githubUser = editTextRepoName.text.toString()
                 view.clearFocus()
+                val githubUser = editTextRepoName.text.toString()
                 val action = WelcomeFragmentDirections.actionWelcomeFragmentToRepositoriesFragment(githubUser)
                 findNavController().navigate(action)
+                editTextRepoName.text.clear()
                 isFirstVisit = false
             }
             val url = Uri.parse("https://www.linkedin.com/in/mateusz-michalec-b2aa7b124/")

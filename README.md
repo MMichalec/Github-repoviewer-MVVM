@@ -13,10 +13,10 @@ Application consists of three screens - welcome screen, repositories list screen
 
 On the repositories list screen clicking any object from the list will show the selected repository details.
 
-<img src="./images/g1.gif" width="30%" />
-<p align="center"><img  src="./images/s1.jpg" width="30%" "Welcome scree">
-<img  src="./images/s2.jpg" width="30%" "Welcome scree">
-<img  src="./images/s3.jpg" width="30%" "Welcome scree"></p>
+
+<p align="center"><img src="./images/g1.gif" width="30%" />
+<img  src="./images/s2.jpg" width="30%" "Welcome screen">
+<img  src="./images/s3.jpg" width="30%" "Welcome screen"></p>
 
 
 --------------------------------------------------
