@@ -1,6 +1,8 @@
 package com.mmichalec.githubRepoviewerMVVM.ui.welcome
 
+import android.app.AlertDialog
 import android.app.Application
+import android.content.DialogInterface
 import android.content.Intent
 import android.inputmethodservice.Keyboard
 import android.net.Uri
@@ -15,16 +17,29 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.mmichalec.githubRepoviewerMVVM.R
 import com.mmichalec.githubRepoviewerMVVM.databinding.WelcomeScreenBinding
+import com.mmichalec.githubRepoviewerMVVM.util.NetworkConnection
 
 class WelcomeFragment : Fragment(R.layout.welcome_screen) {
     private var isFirstVisit = true
     private val viewModel: WelcomeViewModel by viewModels()
+    private var isConnection = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val networkConnection = NetworkConnection(activity?.applicationContext!!)
+        networkConnection.observe(viewLifecycleOwner, Observer { isConnected ->
+            isConnection = isConnected
+            if (!isConnected) {
+                noNetworkPopup()
+            }
+        })
+
+
         val anim = AnimationUtils.loadAnimation(activity?.applicationContext, R.anim.fade_in)
         val anim2 = AnimationUtils.loadAnimation(activity?.applicationContext, R.anim.fade_in)
         val anim3 = AnimationUtils.loadAnimation(activity?.applicationContext, R.anim.fade_in)
@@ -106,5 +121,30 @@ class WelcomeFragment : Fragment(R.layout.welcome_screen) {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         menu.clear()
+    }
+
+    private fun showInfoDialog(message: String) {
+        val builder = AlertDialog.Builder(this@WelcomeFragment.context)
+        builder.setTitle("WARNING")
+        builder.setMessage(message)
+
+        builder.setPositiveButton("Show cached data") { dialogInterface: DialogInterface, i: Int ->
+            val action = WelcomeFragmentDirections.actionWelcomeFragmentToRepositoriesFragment("")
+            findNavController().navigate(action)
+        }
+
+        builder.setNeutralButton("Try again") { dialogInterface: DialogInterface, i: Int ->
+            if(!isConnection)
+                noNetworkPopup()
+        }
+        builder.show()
+    }
+
+    private fun noNetworkPopup() {
+        activity?.runOnUiThread(object : Runnable {
+            override fun run() {
+                showInfoDialog("Application is working in an offline mode.\n\nYou can only display repositories of last checked user. If this is your first use of please make sure you have valid internet connection before continuing.")
+            }
+        })
     }
 }

@@ -1,16 +1,17 @@
-<h1 align="center">Allegro Repositories Display with the use of MVVM architecture</h1>
+<h1 align="center">Repositories Display with the use of MVVM architecture</h1>
 
 
 
 
 ## Using the application
 
-####  Application displays all Github repositories of user Allegro. Implemented in full MVVM Architecture with the use of Kotlin language.
+####  Application displays all Github repositories of given user. Implemented in full MVVM Architecture with the use of Kotlin language.
 
 **.apk** file is in root project directory named **application.apk**. To use it with AndroidStudio emulator just drag .apk file on Emulator window.
 
 Application consists of three screens - welcome screen, repositories list screen and repository details.
 
+On the welcome screen user must provide github user name which repositories will be displayed on the repositories list screen.
 On the repositories list screen clicking any object from the list will show the selected repository details.
 
 
@@ -43,17 +44,6 @@ On the repositories list screen clicking any object from the list will show the 
 - **Views optimized for horizontal displays**
 
 
-
-## How application can be developer further
-
-Application could easily be changed to display repositories of any github user. 
-
-## Challenges I faced during implementing the application
-- MVVM architecture is pretty intimidating at first. There are couple principal changes from MVC/MVP architectures. Proper implementation of MVVM requires to understand the LiveData, Coroutines and Dependency injection. Thankfully tho Android and Kotlin are heavily supported by Google. Both the documentation and learning materials of first-party libraries are superb.
-
-- Initially I did not plan to use caching and local database but at some point during development I found out about Github REST API calls limits.
-
-- Testing Kotlin flows can be tricky
 
 
 

@@ -35,6 +35,7 @@ class RepoFragment : Fragment(R.layout.fragment_repo_list),
     private val viewModel by viewModels<RepoViewModel>()
     private val args by navArgs<RepoFragmentArgs>()
     private var _binding: FragmentRepoListBinding? = null
+    private var githubUser = ""
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -69,8 +70,11 @@ class RepoFragment : Fragment(R.layout.fragment_repo_list),
 
             viewModel.repositories.observe(viewLifecycleOwner) {
                 repoAdapter.submitList(it.data)
+                if(!it.data.isNullOrEmpty()) {
+                    githubUser = it.data[0].full_name.substringBefore("/")
+                }
 
-                progressBar.isVisible = it is Resource.Loading && it.data.isNullOrEmpty()
+                progressBar.isVisible = it is Resource.Loading
                 textViewError.isVisible = it is Resource.Error && it.data.isNullOrEmpty()
                 textViewError.text = it.error?.localizedMessage
 
@@ -143,7 +147,7 @@ class RepoFragment : Fragment(R.layout.fragment_repo_list),
             val action =
                 RepoFragmentDirections.actionRepositoriesFragmentToRepoDetailsFragment(
                     repo.name,
-                    args.githubUser,
+                    githubUser,
                 )
             findNavController().navigate(action)
         } else {

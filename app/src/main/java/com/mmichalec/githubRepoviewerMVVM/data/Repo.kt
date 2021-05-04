@@ -8,6 +8,7 @@ import androidx.room.PrimaryKey
 data class Repo(
     @PrimaryKey val id: Int,
     val name: String,
+    val full_name: String,
     val description: String? = null,
     val created_at: String,
     val updated_at: String? = null,
