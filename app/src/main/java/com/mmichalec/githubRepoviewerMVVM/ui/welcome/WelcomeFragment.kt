@@ -68,11 +68,18 @@ class WelcomeFragment : Fragment(R.layout.welcome_screen) {
 
             buttonStart.setOnClickListener {
                 view.clearFocus()
-                val githubUser = editTextRepoName.text.toString()
-                val action = WelcomeFragmentDirections.actionWelcomeFragmentToRepositoriesFragment(githubUser)
-                findNavController().navigate(action)
-                editTextRepoName.text.clear()
-                isFirstVisit = false
+                if (!isConnection) {
+                    noNetworkPopup()
+                } else {
+                    val githubUser = editTextRepoName.text.toString()
+                    val action =
+                        WelcomeFragmentDirections.actionWelcomeFragmentToRepositoriesFragment(
+                            githubUser
+                        )
+                    findNavController().navigate(action)
+                    editTextRepoName.text.clear()
+                    isFirstVisit = false
+                }
             }
             val url = Uri.parse("https://www.linkedin.com/in/mateusz-michalec-b2aa7b124/")
             val intent = Intent(Intent.ACTION_VIEW, url)
@@ -128,14 +135,14 @@ class WelcomeFragment : Fragment(R.layout.welcome_screen) {
         builder.setTitle("WARNING")
         builder.setMessage(message)
 
+
+        builder.setNeutralButton("Dismiss") { dialogInterface: DialogInterface, i: Int ->
+
+        }
+
         builder.setPositiveButton("Show cached data") { dialogInterface: DialogInterface, i: Int ->
             val action = WelcomeFragmentDirections.actionWelcomeFragmentToRepositoriesFragment("")
             findNavController().navigate(action)
-        }
-
-        builder.setNeutralButton("Try again") { dialogInterface: DialogInterface, i: Int ->
-            if(!isConnection)
-                noNetworkPopup()
         }
         builder.show()
     }
